@@ -7,28 +7,22 @@ import Dashboard from "./Dashboard/Dashboard"
 
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const LogIn = () => {
-    setUserLoggedIn(true)
-  }
-
-
-
 
   return (
     <div className="App">
-      {/* SETUP CONDITIONAL FOR LOGGED IN USER */}
-
-      {/* NOT LOGGED IN */}
-      <div>
-        <Nav />
-        <Welcome />
-        <Footer />
-      </div>
-
-      {/* LOGGED IN */}
-      <div>
-        <Dashboard />
-      </div>
+      {userLoggedIn ?
+        <div>
+          <Nav />
+          <Dashboard />
+          <Footer />
+        </div>
+        :
+        <div>
+          <Nav />
+          <Welcome />
+          <Footer />
+        </div>
+      }
     </div>
   );
 }
