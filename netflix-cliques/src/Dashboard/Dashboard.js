@@ -8,25 +8,25 @@ import TitlesWatched from "./TitlesWatched";
 function Dashboard() {
 
   return(
-    <div>
+    <div style={{backgroundColor: "indianred"}}>
       <div>
         <h3>My Cliques</h3>
         <MyCliques />
       </div>
       <div>
-      <h3>Currently Watching</h3>
+        <h3>Currently Watching</h3>
         <WatchingTitles />
       </div>
       <div>
-      <h3>Favorites</h3>
+        <h3>Favorites</h3>
         <FavoriteTitles />
       </div>
       <div>
-      <h3>Watching Next</h3>
+        <h3>Watching Next</h3>
         <QueuedTitles />
       </div>
       <div>
-      <h3>Watched</h3>
+        <h3>Watched</h3>
         <TitlesWatched />
       </div>
     </div>
