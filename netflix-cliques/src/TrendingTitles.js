@@ -4,7 +4,7 @@ function TrendingTitles() {
 
   return(
     <div style={{backgroundColor: "lightskyblue"}}>
-      <h2>Trending Now:</h2>
+      <h2>Trending Now</h2>
       <div></div>
     </div>
   )
