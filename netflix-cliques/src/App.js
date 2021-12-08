@@ -6,7 +6,10 @@ import Footer from "./Footer";
 import Dashboard from "./Dashboard/Dashboard"
 
 function App() {
-
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const LogIn = () => {
+    setUserLoggedIn(true)
+  }
 
 
 
@@ -16,12 +19,16 @@ function App() {
       {/* SETUP CONDITIONAL FOR LOGGED IN USER */}
 
       {/* NOT LOGGED IN */}
-      <Nav />
-      <Welcome />
-      <Footer />
+      <div>
+        <Nav />
+        <Welcome />
+        <Footer />
+      </div>
 
       {/* LOGGED IN */}
-      <Dashboard />
+      <div>
+        <Dashboard />
+      </div>
     </div>
   );
 }
