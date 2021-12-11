@@ -1,11 +1,14 @@
 import React from 'react';
+import { StyleReset } from 'atomize';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
   <React.StrictMode>
+    <StyleReset />
     <App />
   </React.StrictMode>,
   document.getElementById('root')
