@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "atomize": "^1.0.28",
     "react-transition-group": "^4.4.2"
   }
 }

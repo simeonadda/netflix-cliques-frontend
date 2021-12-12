@@ -4,7 +4,9 @@ function TitlesWatched() {
 
   return(
     <div>
-      <div>1</div>
+      <div>
+        <button>Add Netflix Title</button>
+      </div>
     </div>
   )
 }
