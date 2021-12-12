@@ -1,45 +1,72 @@
 import React, { useState } from "react";
-import { ThemeProvider, Div, Row, Col, Text } from "atomize";
+import { ThemeProvider, Div, Row, Col, Text, Anchor } from "atomize";
 
 function Nav() {
 const [userLoggedIn, setUserLoggedIn] = useState(false)
 
+const theme = {
+  fontFamily: {
+    primary: 'Teko, sans-serif',
+    secondary: 'Oswald, sans-serif'
+  }
+}
   return(
-    <div style={{backgroundColor: "blanchedalmond"}}>
+    <ThemeProvider theme={theme}>
+      <Div bg="black" p={{ y:"14px" }}>
       {userLoggedIn ?
-        <Row>
+        <Row d="flex" align="center">
           <Col>
-            <div>
-              <h1>Netflix Cliques</h1>
-            </div>
+            <Text
+              fontFamily="primary"
+              textSize="display2"
+              >
+              <Anchor textColor="white" hoverTextColor="danger800">NETFLIX CLIQUES</Anchor>
+            </Text>
           </Col>
           <Col>
-            <div>
-              <a>Join A Clique</a> |
-              <a> About</a> |
-              <a> Username</a>
-            </div>
+            <Text
+              fontFamily="secondary"
+              textSize="title"
+              textColor="danger800"
+              d="flex"
+              justify="space-around"
+              p={{ x: {md: "4rem", lg: "10rem", xl: "12rem"} }}
+              >
+              <Anchor textColor="white" hoverTextColor="danger800">JOIN A CLIQUE</Anchor> |
+              <Anchor textColor="white" hoverTextColor="danger800"> ABOUT</Anchor> |
+              <Anchor textColor="white" hoverTextColor="danger800"> USERNAME</Anchor>
+            </Text>
           </Col>
         </Row>
         :
-        <Row>
+        <Row d="flex" align="center">
           <Col>
-            <div>
-              <h1>Netflix Cliques</h1>
-            </div>
+              <Text
+                fontFamily="primary"
+                textSize="display2"
+              >
+                <Anchor textColor="white" hoverTextColor="danger800" >NETFLIX CLIQUES</Anchor>
+              </Text>
           </Col>
           <Col>
-            <div>
-              <a>Join A Clique</a> |
-              <a> About</a> |
-              <a> Sign In</a> |
-              <a> Sign Up</a>
-            </div>
+            <Text
+              fontFamily="secondary"
+              textSize="subheader"
+              textColor="danger800"
+              d="flex"
+              justify="space-around"
+              p={{ x: {md: "4rem", lg: "10rem", xl: "12rem"} }}
+              >
+              <Anchor textColor="white" hoverTextColor="danger800">JOIN A CLIQUE</Anchor>
+              <Anchor textColor="white" hoverTextColor="danger800">ABOUT</Anchor>
+              <Anchor textColor="white" hoverTextColor="danger800">SIGN IN</Anchor>
+              <Anchor textColor="white" hoverTextColor="danger800">SIGN UP</Anchor>
+            </Text>
           </Col>
         </Row>
       }
-
-    </div>
+      </Div>
+    </ThemeProvider>
   )
 }
 
