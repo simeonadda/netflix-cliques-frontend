@@ -28,7 +28,7 @@ function TrendingTitles() {
               textColor="black"
               fontFamily="code"
             >
-              Don't worry about being late to party, connect with others who are watching what you're watching now!
+              Don't worry about being late to the party, connect with others who are watching what you're watching now!
             </Text>
           </Div>
           <br></br>

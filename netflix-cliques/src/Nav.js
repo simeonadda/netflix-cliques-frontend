@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ThemeProvider, Div, Row, Col, Text, Anchor } from "atomize";
+import { ThemeProvider, Div, Row, Col, Text, Anchor, Image } from "atomize";
 
 function Nav() {
 const [userLoggedIn, setUserLoggedIn] = useState(false)
@@ -20,7 +20,9 @@ const theme = {
               fontFamily="primary"
               textSize="display2"
               >
-              <Anchor textColor="white" hoverTextColor="danger800">NETFLIX CLIQUES</Anchor>
+              <Anchor textColor="white" hoverTextColor="danger800">
+                NETFLIX CLIQUES
+              </Anchor>
             </Text>
           </Col>
           <Col>
@@ -44,8 +46,12 @@ const theme = {
               <Text
                 fontFamily="primary"
                 textSize="display2"
+                p={{ x: "2rem" }}
               >
-                <Anchor textColor="white" hoverTextColor="danger800" >NETFLIX CLIQUES</Anchor>
+                <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
+                  <Image h="51.2px" w="51.2px%" src="./netflix.png"></Image>
+                  NETFLIX CLIQUES
+                </Anchor>
               </Text>
           </Col>
           <Col>
