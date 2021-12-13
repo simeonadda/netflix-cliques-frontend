@@ -13,10 +13,12 @@ const theme = {
   return(
     <ThemeProvider theme={theme}>
       <Div bg="black" p={{ y:"14px" }}>
-      {!userLoggedIn ?
+      {userLoggedIn ?
         <Row d="flex" align="center">
           <Col>
             <Text
+              d="flex"
+              align="center"
               fontFamily="primary"
               textSize="display2"
               p={{ x: "2rem" }}
@@ -46,12 +48,14 @@ const theme = {
         <Row d="flex" align="center">
           <Col>
               <Text
+                d="flex"
+                align="center"
                 fontFamily="primary"
                 textSize="display2"
                 p={{ x: "2rem" }}
               >
                 <Anchor d="flex" textColor="white" hoverTextColor="danger800">
-                  <Image h="51.2px" w="51.2px" src="./netflix.png"></Image>
+                  <Image h="40px" w="40px" src="./netflix.png"></Image>
                   NETFLIX CLIQUES
                 </Anchor>
               </Text>
