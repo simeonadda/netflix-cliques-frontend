@@ -11,13 +11,14 @@ function Footer() {
 
   return(
     <ThemeProvider theme={theme}>
-      <Div bg="black" textColor="white" p={{ y: "20px" }}>
-        <Row>
+      <Div bg="black" textColor="white" p={{ y: "16px" }}>
+        <Row d="flex" align="center">
           <Col>
             <Text
               fontFamily="secondary"
               textSize="subheader"
               d="flex"
+              align="center"
               justify="space-around"
               p={{x: {md: "2rem", lg: "6rem", xl: "10rem"}}}
             >

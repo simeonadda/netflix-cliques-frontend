@@ -4,26 +4,29 @@ import Nav from "./Nav";
 import Welcome from "./Welcome";
 import Footer from "./Footer";
 import Dashboard from "./Dashboard/Dashboard"
+import { ThemeProvider, Div, Row, Col, Text, Container } from "atomize";
+
+
 
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   return (
-    <div className="App">
-      {userLoggedIn ?
-        <div>
+    <Div className="App">
+      {!userLoggedIn ?
+        <Div>
           <Nav />
           <Dashboard />
           <Footer />
-        </div>
+        </Div>
         :
-        <div>
+        <Div>
           <Nav />
           <Welcome />
           <Footer />
-        </div>
+        </Div>
       }
-    </div>
+    </Div>
   );
 }
 
