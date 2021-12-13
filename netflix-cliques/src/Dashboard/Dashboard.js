@@ -20,38 +20,39 @@ function Dashboard() {
     <ThemeProvider theme={theme}>
       <Div bg="gray300">
       <Row>
-        <Col size="9">
-          <Container>
-            <MyCliques />
-          </Container>
-          <div>
-            <h3>Currently Watching</h3>
-            <WatchingTitles />
-          </div>
-          <div>
-            <h3>Favorites</h3>
-            <FavoriteTitles />
-          </div>
-          <div>
-            <h3>Watching Next</h3>
-            <QueuedTitles />
-          </div>
-          <div>
-            <h3>Watched</h3>
-            <TitlesWatched />
-          </div>
-        </Col>
 
         <Col size="3" bg="white">
-          <Div fontFamily="code" >
+          <Div fontFamily="primary" textWeight="700" >
+            <br></br>
             <Image></Image>
-            <Text>USERNAME</Text>
-            <Text>SOCIAL MEDIA</Text>
-            <Text>EMAIL</Text>
-            <Text>EDIT PROFILE</Text>
-            <Text>CHANGE PASSWORD</Text>
+            <br></br>
+            <Text textSize="title">Username</Text>
+            <br></br>
+            <Text textSize="title">Social Media</Text>
+            <br></br>
+            <Text textSize="title">Email</Text>
+            <br></br>
+            <Text textSize="title">Edit Profile</Text>
+            <br></br>
+            <Text textSize="title">Change Password</Text>
           </Div>
         </Col>
+
+        <Col size="7" d="flex" flexDir="column">
+          <br></br>
+          <MyCliques />
+          <br></br>
+          <WatchingTitles />
+          <br></br>
+          <FavoriteTitles />
+          <br></br>
+          <QueuedTitles />
+          <br></br>
+          <TitlesWatched />
+          <br></br>
+        </Col>
+
+
       </Row>
 
       </Div>

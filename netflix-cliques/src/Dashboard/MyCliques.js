@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import { ThemeProvider, Modal, Div, Row, Col, Button, Text, Container, Icon, Anchor } from "atomize";
+import { ThemeProvider, Modal, Container, Row, Col, Button, Text, Icon, Anchor, Image } from "atomize";
 import NetflixModal from "./NetflixModal"
 
 function MyCliques() {
   const [modal, showModal] = useState(false)
 
   return(
+    <Container>
       <Row d="flex" justify="space-between">
         <Col d="flex" justify="flex-start">
           <Text
-            textSize="title"
+            textSize="subheader"
             textColor="black"
-            fontFamily="primary"
+            fontFamily="code"
+            textWeight="700"
           >
             MY CLIQUES
           </Text>
@@ -21,14 +23,15 @@ function MyCliques() {
             <Icon
               name="Add"
               color="success800"
-              size="24px"
+              size="20px"
             />
             <Text
-              textSize="title"
+              textSize="subheader"
               textColor="black"
-              fontFamily="primary"
+              fontFamily="code"
+              textWeight="700"
             >
-              ADD NEW CLIQUES
+              ADD NEW CLIQUE
             </Text>
           </Anchor>
         </Col>
@@ -37,6 +40,14 @@ function MyCliques() {
           onClose={() => showModal(false)}
         />
       </Row>
+      <br></br>
+      <Container>
+        <Image h="120px" w="120px" src="./netflix_n.png"></Image>
+        <Text fontFamily="code" textSize="subheader">You currently have no cliques. <Anchor>Add new clique.</Anchor></Text>
+      </Container>
+      <br></br>
+      <hr></hr>
+    </Container>
   )
 }
 

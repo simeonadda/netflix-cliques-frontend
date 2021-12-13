@@ -21,8 +21,8 @@ const theme = {
               textSize="display2"
               p={{ x: "2rem" }}
             >
-              <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
-                <Image h="51.2px" w="51.2px%" src="./netflix.png"></Image>
+              <Anchor d="flex" textColor="white" hoverTextColor="danger800">
+                <Image h="40px" w="40px" src="./netflix.png"></Image>
                 NETFLIX CLIQUES
               </Anchor>
             </Text>
@@ -50,8 +50,8 @@ const theme = {
                 textSize="display2"
                 p={{ x: "2rem" }}
               >
-                <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
-                  <Image h="51.2px" w="51.2px%" src="./netflix.png"></Image>
+                <Anchor d="flex" textColor="white" hoverTextColor="danger800">
+                  <Image h="51.2px" w="51.2px" src="./netflix.png"></Image>
                   NETFLIX CLIQUES
                 </Anchor>
               </Text>

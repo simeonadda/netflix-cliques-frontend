@@ -1,21 +1,57 @@
 import React, { useState } from "react";
 import NetflixModal from "./NetflixModal"
-import { Modal } from "atomize";
+import { ThemeProvider, Modal, Container, Row, Col, Button, Text, Icon, Anchor, Image } from "atomize";
 
 function WatchingTitles() {
   const [modal, showModal] = useState(false)
 
   return(
-    <div>
-      <div>
-        <button onClick={() => showModal(true)}>
-          Add Netflix Title</button>
+    <Container>
+      <Row d="flex" justify="space-between">
+
+        <Col d="flex" justify="flex-start">
+          <Text
+            textSize="subheader"
+            textColor="black"
+            fontFamily="code"
+            textWeight="700"
+          >
+            CURRENTLY WATCHING
+          </Text>
+        </Col>
+
+        <Col d="flex" justify="flex-end" onClick={() => showModal(true)}>
+          <Anchor d="flex" flexDir="row" align="center">
+            <Icon
+              name="Add"
+              color="success800"
+              size="20px"
+            />
+            <Text
+              textSize="subheader"
+              textColor="black"
+              fontFamily="code"
+              textWeight="700"
+            >
+              ADD NEW TITLE
+            </Text>
+          </Anchor>
+        </Col>
+
         <NetflixModal
           isOpen={modal}
           onClose={() => showModal(false)}
         />
-      </div>
-    </div>
+
+      </Row>
+      <br></br>
+      <Container>
+        <Image h="120px" w="120px" src="./netflix_n.png"></Image>
+          <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add new title.</Anchor></Text>
+      </Container>
+    <br></br>
+    <hr></hr>
+    </Container>
   )
 }
 

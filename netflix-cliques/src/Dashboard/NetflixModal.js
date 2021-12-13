@@ -8,7 +8,8 @@ function NetflixModal({ isOpen, onClose }) {
       isOpen={isOpen}
       onClose={onClose}
       rounded="sm"
-      maxW="48rem"
+      h="12rem"
+      maxW="72rem"
     >
     <Icon
       name="Cross"
