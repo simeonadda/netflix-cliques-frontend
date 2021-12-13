@@ -31,7 +31,7 @@ function QueuedTitles() {
               fontFamily="code"
               textWeight="700"
             >
-              ADD NEW TITLE
+              ADD A TITLE YOU WANT TO WATCH
             </Text>
           </Anchor>
         </Col>
@@ -43,7 +43,7 @@ function QueuedTitles() {
       <br></br>
       <Container>
         <Image h="120px" w="120px" src="./netflix_n.png"></Image>
-        <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add new title.</Anchor></Text>
+        <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add a title you want to watch.</Anchor></Text>
       </Container>
     <br></br>
     <hr></hr>

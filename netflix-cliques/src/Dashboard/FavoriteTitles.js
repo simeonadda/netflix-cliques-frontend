@@ -31,7 +31,7 @@ function FavoriteTitles() {
               fontFamily="code"
               textWeight="700"
             >
-              ADD NEW TITLE
+              ADD A FAVORITE TITLE
             </Text>
           </Anchor>
         </Col>
@@ -43,7 +43,7 @@ function FavoriteTitles() {
       <br></br>
       <Container>
         <Image h="120px" w="120px" src="./netflix_n.png"></Image>
-        <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add new title.</Anchor></Text>
+        <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add a favorite title.</Anchor></Text>
       </Container>
       <br></br>
       <hr></hr>

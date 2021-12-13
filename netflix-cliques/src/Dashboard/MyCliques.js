@@ -31,7 +31,7 @@ function MyCliques() {
               fontFamily="code"
               textWeight="700"
             >
-              ADD NEW CLIQUE
+              ADD A NEW CLIQUE
             </Text>
           </Anchor>
         </Col>
@@ -43,7 +43,7 @@ function MyCliques() {
       <br></br>
       <Container>
         <Image h="120px" w="120px" src="./netflix_n.png"></Image>
-        <Text fontFamily="code" textSize="subheader">You currently have no cliques. <Anchor>Add new clique.</Anchor></Text>
+        <Text fontFamily="code" textSize="subheader">You currently have no cliques. <Anchor>Add a new clique.</Anchor></Text>
       </Container>
       <br></br>
       <hr></hr>

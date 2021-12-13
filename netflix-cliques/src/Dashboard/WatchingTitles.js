@@ -16,7 +16,7 @@ function WatchingTitles() {
             fontFamily="code"
             textWeight="700"
           >
-            CURRENTLY WATCHING
+            WATCHING NOW
           </Text>
         </Col>
 
@@ -33,7 +33,7 @@ function WatchingTitles() {
               fontFamily="code"
               textWeight="700"
             >
-              ADD NEW TITLE
+              ADD A TITLE YOU'RE WATCHING NOW
             </Text>
           </Anchor>
         </Col>
@@ -47,7 +47,7 @@ function WatchingTitles() {
       <br></br>
       <Container>
         <Image h="120px" w="120px" src="./netflix_n.png"></Image>
-          <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add new title.</Anchor></Text>
+          <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add a title you're watching now.</Anchor></Text>
       </Container>
     <br></br>
     <hr></hr>
