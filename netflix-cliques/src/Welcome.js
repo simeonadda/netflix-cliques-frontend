@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import TrendingTitles from "./TrendingTitles";
 import { ThemeProvider, Div, Button, Text, Icon, Row, Col, Image } from "atomize";
+import SignUpModal from "./SignUp";
 
 function Welcome() {
+  const [modal, showModal] = useState(false)
+
   const theme = {
     fontFamily: {
       primary: 'Bitter, serif',
       secondary: 'Oswald, serif',
+      code: 'Teko, sans-serif'
     }
   }
 
@@ -26,6 +30,7 @@ function Welcome() {
               </Text>
               <br></br>
               <Button
+                onClick={() => showModal(true)}
                 fontFamily="secondary"
                 textSize="heading"
                 p="2rem"
@@ -37,6 +42,10 @@ function Welcome() {
               >
                 CREATE A CLIQUE
               </Button>
+              <SignUpModal
+                isOpen={modal}
+                onClose={() => showModal(false)}
+              />
             </Col>
             <Col size="7">
               <Image border="0px solid" borderColor="white" p="0rem" src="https://media1.giphy.com/media/lqLTI5tCAkLiQtsOGM/giphy.gif?cid=ecf05e47s5i01ye8d3bqke7slv17tclw3ovbdzbd1cf2ajsv&rid=giphy.gif&ct=g"></Image>

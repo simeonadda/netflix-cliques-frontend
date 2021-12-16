@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider, Modal, Container, Row, Col, Button, Text, Icon, Anchor, Image } from "atomize";
 import NetflixModal from "./NetflixModal"
+import Cliques from "./Cliques"
+
 
 function MyCliques() {
   const [modal, showModal] = useState(false)
@@ -41,10 +43,7 @@ function MyCliques() {
         />
       </Row>
       <br></br>
-      <Container>
-        <Image h="120px" w="120px" src="./netflix_n.png"></Image>
-        <Text fontFamily="code" textSize="subheader">You currently have no cliques. <Anchor>Add a new clique.</Anchor></Text>
-      </Container>
+      
       <br></br>
       <hr></hr>
     </Container>

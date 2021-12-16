@@ -1,82 +1,60 @@
 import React, { useState } from "react";
-import { ThemeProvider, Div, Row, Col, Text, Anchor, Image } from "atomize";
+import { ThemeProvider, Div, Row, Col, Text, Anchor, Image, Icon } from "atomize";
+import SignUpModal from "./SignUp"
+import LoginSideDrawer from "./Login"
 
 function Nav() {
-const [userLoggedIn, setUserLoggedIn] = useState(false)
+  const [userLoggedIn, setUserLoggedIn] = useState(false)
+  const [sideDrawer, setSideDrawer] = useState(false)
+  const [LoginModal, setLoginModal] = useState(false)
 
-const theme = {
-  fontFamily: {
-    primary: 'Teko, sans-serif',
-    secondary: 'Oswald, sans-serif'
+  const theme = {
+    fontFamily: {
+      primary: 'Teko, sans-serif',
+      secondary: 'Oswald, sans-serif',
+      code: 'Bitter, serif'
+    }
   }
-}
+
   return(
     <ThemeProvider theme={theme}>
-      <Div bg="black" p={{ y:"14px" }}>
-      {userLoggedIn ?
+      <Div bg="black" p={{ y:"8px" }}>
         <Row d="flex" align="center">
           <Col>
-            <Text
-              d="flex"
-              align="center"
-              fontFamily="primary"
-              textSize="display2"
-              p={{ x: "2rem" }}
-            >
+            <Text d="flex" align="center" fontFamily="primary" textSize="display2" p={{ x: "2rem" }}>
               <Anchor d="flex" textColor="white" hoverTextColor="danger800">
                 <Image h="40px" w="40px" src="./netflix.png"></Image>
                 NETFLIX CLIQUES
               </Anchor>
             </Text>
           </Col>
-          <Col>
-            <Text
-              fontFamily="secondary"
-              textSize="subheader"
-              textColor="danger800"
-              d="flex"
-              justify="space-around"
-              p={{ x: {md: "4rem", lg: "10rem", xl: "12rem"} }}
-              >
-              <Anchor textColor="white" hoverTextColor="danger800">JOIN A CLIQUE</Anchor>
-              <Anchor textColor="white" hoverTextColor="danger800">ABOUT</Anchor>
-              <Anchor textColor="white" hoverTextColor="danger800">USERNAME</Anchor>
+
+          <Col size="5">
+            <Text fontFamily="secondary" textSize="subheader" textColor="danger800" d="flex" justify="space-around">
+              <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
+                <Icon name="Plus" color="white" size="24px"/>
+                JOIN A CLIQUE
+              </Anchor>
+
+              <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
+                <Icon name="Info" color="white" size="24px" />
+                ABOUT
+              </Anchor>
+
+              <Anchor onClick={() => setSideDrawer(true)} d="flex" align="center" textColor="white" hoverTextColor="danger800">
+                <Icon name="UserSolid" color="white" size="24px" />
+                SIGN IN
+                <LoginSideDrawer
+                  isOpen={sideDrawer} onClose={() => setSideDrawer(false)} />
+              </Anchor>
+
+              <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
+                <Icon name="User" color="white" size="24px" />
+                SIGN UP
+              </Anchor>
             </Text>
           </Col>
         </Row>
-        :
-        <Row d="flex" align="center">
-          <Col>
-              <Text
-                d="flex"
-                align="center"
-                fontFamily="primary"
-                textSize="display2"
-                p={{ x: "2rem" }}
-              >
-                <Anchor d="flex" textColor="white" hoverTextColor="danger800">
-                  <Image h="40px" w="40px" src="./netflix.png"></Image>
-                  NETFLIX CLIQUES
-                </Anchor>
-              </Text>
-          </Col>
-          <Col>
-            <Text
-              fontFamily="secondary"
-              textSize="subheader"
-              textColor="danger800"
-              d="flex"
-              justify="space-around"
-              p={{ x: {md: "4rem", lg: "10rem", xl: "12rem"} }}
-              >
-              <Anchor textColor="white" hoverTextColor="danger800">JOIN A CLIQUE</Anchor>
-              <Anchor textColor="white" hoverTextColor="danger800">ABOUT</Anchor>
-              <Anchor textColor="white" hoverTextColor="danger800">SIGN IN</Anchor>
-              <Anchor textColor="white" hoverTextColor="danger800">SIGN UP</Anchor>
-            </Text>
-          </Col>
-        </Row>
-      }
       </Div>
     </ThemeProvider>
   )
