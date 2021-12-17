@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { ThemeProvider, Div, Row, Col, Text, Anchor } from "atomize";
 
 function Footer() {

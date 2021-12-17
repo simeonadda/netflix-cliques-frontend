@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ThemeProvider, Div, Button, Text, Icon, Row, Col, Image } from "atomize";
+import { ThemeProvider, Container, Div, Button, Text, Col, } from "atomize";
 
 
 function TrendingTitles() {
@@ -41,6 +41,13 @@ function TrendingTitles() {
               Top Trending Shows
             </Text>
           </Div>
+
+
+          <Container>
+
+          </Container>
+
+
           <br></br>
           <Div>
             <Text

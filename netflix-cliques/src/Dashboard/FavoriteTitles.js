@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NetflixModal from "./NetflixModal"
-import { ThemeProvider, Modal, Container, Row, Col, Button, Text, Icon, Anchor, Image } from "atomize";
+import { ThemeProvider, Container, Row, Col, Text, Icon, Anchor, Image } from "atomize";
 
 function FavoriteTitles() {
   const [modal, showModal] = useState(false)

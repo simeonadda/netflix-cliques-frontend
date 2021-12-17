@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { ThemeProvider, Div, Row, Col, Text, Anchor, Image, Icon } from "atomize";
-import SignUpModal from "./SignUp"
 import LoginSideDrawer from "./Login"
 
 function Nav() {
   const [userLoggedIn, setUserLoggedIn] = useState(false)
   const [sideDrawer, setSideDrawer] = useState(false)
   const [LoginModal, setLoginModal] = useState(false)
+
+  const checkUserLogin = () => {
+    setUserLoggedIn(!userLoggedIn)
+  }
 
   const theme = {
     fontFamily: {
@@ -44,7 +47,7 @@ function Nav() {
               <Anchor onClick={() => setSideDrawer(true)} d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="UserSolid" color="white" size="24px" />
                 SIGN IN
-                <LoginSideDrawer
+                <LoginSideDrawer checkUserLogin={checkUserLogin}
                   isOpen={sideDrawer} onClose={() => setSideDrawer(false)} />
               </Anchor>
 

@@ -71,22 +71,8 @@ function SignUpModal({ isOpen, onClose, props }) {
   }
 
   return(
-    <Modal bg="black" fontFamily="primary" align="center"
-      isOpen={isOpen}
-      onClose={onClose}
-      rounded="0"
-      minW="32rem"
-      m="40rem"
-    >
-      <Icon
-        name="Cross"
-        pos="absolute"
-        top="1rem"
-        right="1rem"
-        size="16px"
-        onClick={onClose}
-        cursor="pointer"
-      />
+    <Modal bg="black" fontFamily="primary" align="center" isOpen={isOpen} onClose={onClose} rounded="0" minW="32rem" m="40rem">
+      <Icon name="Cross" pos="absolute" top="1rem" right="1rem" size="16px" onClick={onClose} cursor="pointer"/>
 
     <Text textSize="display2" fontFamily="primary" textColor="white">
           SIGN UP MODAL
@@ -95,112 +81,39 @@ function SignUpModal({ isOpen, onClose, props }) {
       <form onSubmit={registerUser}>
         <Div m="32px">
           <label for="name">Name</label>
-          <Input
-            id="name"
-            onChange={handleChangeName}
-            textSize="heading"
-            type="text"
-            value={name}
-          />
+          <Input id="name" onChange={handleChangeName} textSize="heading" type="text" value={name}/>
         </Div>
         <Div m="32px">
           <label for="username">Username</label>
-          <Input
-            id="username"
-            onChange={handleChangeUsername}
-            textSize="heading"
-
-            type="text"
-            value={username}
-          />
+          <Input id="username" onChange={handleChangeUsername} textSize="heading" type="text" value={username}/>
         </Div>
         <Div m="32px">
           <label for="email">Email</label>
-          <Input
-            id="email"
-            onChange={handleChangeEmail}
-            textSize="heading"
-
-            type="text"
-            value={email}
-          />
+          <Input id="email" onChange={handleChangeEmail} textSize="heading" type="text" value={email} />
         </Div>
         <Div m="32px">
           <label for="password">Password</label>
-          <Input
-            required
-            id="password"
-            onChange={handleChangePassword}
-            textSize="heading"
-
-            type={hidePassword ? "text" : "password"}
-            value={password}
+          <Input required id="password" onChange={handleChangePassword} textSize="heading" type={hidePassword ? "text" : "password"} value={password}
             suffix={
-              <Button
-                type="button"
-                pos="absolute"
-                onClick={() => showPassword(current => !current)}
-                bg="transparent"
-                w="3rem"
-                top="0"
-                right="0"
-                rounded={{ r: "md" }}
-              >
-                <Icon
-                  name={hidePassword ? "EyeSolid" : "Eye"}
-                  color={hidePassword ? "danger800" : "success800"}
-                  size="16px"
-                />
+              <Button type="button" pos="absolute" onClick={() => showPassword(current => !current)} bg="transparent" w="3rem" top="0" right="0" rounded={{ r: "md" }}>
+                <Icon name={hidePassword ? "EyeSolid" : "Eye"} color={hidePassword ? "danger800" : "success800"} size="16px"/>
               </Button>
             }
           />
         </Div>
         <Div m="32px">
           <label for="confirmPassword">Confirm Password</label>
-          <Input
-            required
-            id="confirmPassword"
-            onChange={handleChangeConfirmPassword}
-            textSize="heading"
-
-            type={hidePassword ? "text" : "password"}
-            value={confirmPassword}
+          <Input required id="confirmPassword" onChange={handleChangeConfirmPassword} textSize="heading" type={hidePassword ? "text" : "password"} value={confirmPassword}
             suffix={
-              <Button
-                type="button"
-                pos="absolute"
-                onClick={() => showPassword(current => !current)}
-                bg="transparent"
-                w="3rem"
-                top="0"
-                right="0"
-                rounded={{ r: "md" }}
-              >
-              <Icon
-                name={hidePassword ? "EyeSolid" : "Eye"}
-                color={hidePassword ? "danger800" : "success800"}
-                size="16px"
-              />
-            </Button>
+              <Button type="button" pos="absolute" onClick={() => showPassword(current => !current)} bg="transparent" w="3rem" top="0" right="0" rounded={{ r: "md" }}>
+                <Icon name={hidePassword ? "EyeSolid" : "Eye"} color={hidePassword ? "danger800" : "success800"} size="16px"/>
+              </Button>
             }
           />
         </Div>
 
-
-
         <Div d="flex" justify="flex-end">
-          <Button
-            onClick={onClose}
-            fontFamily="secondary"
-            textSize="heading"
-            p="2rem"
-            bg="gray300"
-            hoverBg="gray400"
-            shadow="3"
-            hoverShadow="4"
-            textColor="black"
-            m={{ r: "1rem" }}
-          >
+          <Button onClick={onClose} fontFamily="secondary" textSize="heading" p="2rem" bg="gray300" hoverBg="gray400" shadow="3" hoverShadow="4" textColor="black" m={{ r: "1rem" }}>
             Close
           </Button>
           <Button type="submit" isLoading={submit} onClick={onClickSubmit} fontFamily="secondary" textSize="heading" p="2rem" bg={submit ? "danger500" : "danger800"} hoverBg="danger700" shadow="3" hoverShadow="4">

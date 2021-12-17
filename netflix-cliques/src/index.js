@@ -13,11 +13,6 @@ const debug =
 // 1. Create a client engine instance
 const engine = new Styletron();
 
-const theme = {
-  fontFamily: {
-    primary: 'Teko, sans-serif',
-  }
-}
 
 ReactDOM.render(
   <React.StrictMode>

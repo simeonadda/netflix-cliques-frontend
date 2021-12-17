@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TrendingTitles from "./TrendingTitles";
-import { ThemeProvider, Div, Button, Text, Icon, Row, Col, Image } from "atomize";
+import { ThemeProvider, Div, Button, Text, Row, Col, Image } from "atomize";
 import SignUpModal from "./SignUp";
 
 function Welcome() {

@@ -37,13 +37,9 @@ function MyCliques() {
             </Text>
           </Anchor>
         </Col>
-        <NetflixModal
-          isOpen={modal}
-          onClose={() => showModal(false)}
-        />
       </Row>
       <br></br>
-      
+
       <br></br>
       <hr></hr>
     </Container>

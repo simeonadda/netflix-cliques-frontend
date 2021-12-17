@@ -1,12 +1,11 @@
-import React, { useState, useEffect} from "react";
+import React, { useState } from "react";
 import { Div, Button, SideDrawer, Icon, Text, Input, Anchor } from "atomize";
 
 function LoginSideDrawer({ isOpen, onClose }) {
   const [hidePassword, showPassword] = useState(false)
   const [submit, setSubmit] = useState(false)
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [activeUser, setActiveUser] = useState(true)
-
-  const [sideDrawer, setSideDrawer] = useState(false)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -17,6 +16,10 @@ function LoginSideDrawer({ isOpen, onClose }) {
 
   const handleChangePassword = (e) => {
     setPassword(e.target.value)
+  }
+
+  const handleUserLogin = () => {
+    setUserLoggedIn(!userLoggedIn)
   }
 
   const checkActiveUser = () => {
@@ -39,7 +42,7 @@ function LoginSideDrawer({ isOpen, onClose }) {
         credentials: "include",
       })
       if (response.status === 200) {
-
+        handleUserLogin()
       } else {
         response.json().then((data) => {
           console.log(data);

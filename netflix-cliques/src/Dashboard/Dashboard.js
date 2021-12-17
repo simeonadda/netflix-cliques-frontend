@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ThemeProvider, Div, Row, Col, Text, Container, Image } from "atomize";
+import { ThemeProvider, Div, Row, Col, Text, Image } from "atomize";
 import MyCliques from "./MyCliques";
 import WatchingTitles from "./WatchingTitles";
 import FavoriteTitles from "./FavoriteTitles";
