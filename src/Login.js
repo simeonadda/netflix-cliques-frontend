@@ -31,7 +31,7 @@ function LoginSideDrawer({ isOpen, onClose, userAuthHandler}) {
 
   const loginUser = async (e) => {
     e.preventDefault()
-    const url = baseURL + "/api/v1/login"
+    const url = baseURL + "/api/v1/users/login"
     try {
       const response = await fetch(url, {
         method: 'POST',
