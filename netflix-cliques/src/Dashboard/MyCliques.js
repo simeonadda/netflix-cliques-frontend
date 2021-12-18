@@ -25,6 +25,7 @@ function MyCliques(props) {
       })
       .then((data) => {
         console.log(data);
+        console.log(data.data);
         setCliques(data.data);
       });
   };
@@ -34,7 +35,7 @@ function MyCliques(props) {
   }, [])
 
   const saveNewCliqueDataHandler = (newCliqueData) => {
-    fetch(baseUrl + "/api/v1/cliques/", {
+    fetch(baseUrl + "/api/v1/cliques/new_clique", {
       method: "POST",
       body: JSON.stringify({
         name: newCliqueData.name,
@@ -116,7 +117,6 @@ function MyCliques(props) {
           >
             MY CLIQUES
           </Text>
-          <CliqueList cliques={cliques} deleteClique={deleteCliqueHandler} updateClique={showEditFormHandler} />
         </Col>
         <Col d="flex" justify="flex-end">
           <Anchor d="flex" flexDir="row" align="center" onClick={onButtonClick}>
@@ -135,6 +135,10 @@ function MyCliques(props) {
             </Text>
           </Anchor>
         </Col>
+      </Row>
+      <br></br>
+      <Row d="flex" justify="space-between">
+        <CliqueList cliques={cliques} deleteClique={deleteCliqueHandler} updateClique={showEditFormHandler} />
       </Row></>
       :
       <>

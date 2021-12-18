@@ -5,6 +5,11 @@ import { ThemeProvider, Modal, Container, Row, Col, Button, Text, Icon, Anchor, 
 
 function WatchingTitles() {
   const [modal, setModal] = useState(false)
+  const [showComponent, setShowComponent] = useState(false)
+
+  const onButtonClick = () => {
+    setShowComponent(!showComponent)
+  }
 
   return(
     <React.Fragment>
@@ -34,15 +39,19 @@ function WatchingTitles() {
       </Row>
       <br></br>
       <Container>
-        <Image h="120px" w="120px" src="./netflix_n.png"></Image>
+        {showComponent ? <>
+          <NetflixModal buttonClick={onButtonClick} />
+          </>
+          :
+          <>
+          <Image h="120px" w="120px" src="./netflix_n.png"></Image>
           <Text fontFamily="code" textSize="subheader">
             You currently have no titles. <Anchor>Add a title you're watching now.</Anchor>
-        </Text>
+        </Text></>}
       </Container>
     <br></br>
     <hr></hr>
     </Container>
-    <SearchResults />
     </React.Fragment>
   )
 }

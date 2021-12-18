@@ -40,7 +40,7 @@ const NewCliqueForm = (props) => {
       <form onSubmit={submitHandler}>
         <Input type="text" placeholder="Name of your clique" onChange={changeNameHandler} value={name} />
         <Button type="submit">Create New Clique</Button>
-        <Button closeButton={e => props.buttonClick()}>Close</Button>
+        <Button closeButton={e => props.buttonClick}>Close</Button>
       </form>
     </Container>
   )
