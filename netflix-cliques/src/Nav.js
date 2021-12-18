@@ -4,8 +4,7 @@ import SignUpModal from "./SignUp"
 import LoginSideDrawer from "./Login"
 import Logout from "./Logout"
 
-function Nav(userAuth) {
-  const [userLoggedIn, setUserLoggedIn] = useState(false)
+function Nav({userAuthHandler, isLoggedIn}) {
   const [sideDrawer, setSideDrawer] = useState(false)
   const [modal, setModal] = useState(false)
 
@@ -47,7 +46,7 @@ function Nav(userAuth) {
 
 
 
-              {userLoggedIn ?
+              {isLoggedIn ?
               <>
               <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="UserSolid" color="white" size="24px" />
@@ -56,14 +55,14 @@ function Nav(userAuth) {
 
               <Anchor  d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="User" color="white" size="24px" />
-                <Logout userAuth={userAuth} />
+                <Logout userAuthHandler={userAuthHandler} />
               </Anchor></>
               :
               <>
               <Anchor onClick={() => setSideDrawer(true)} d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="UserSolid" color="white" size="24px" />
                 SIGN IN
-                <LoginSideDrawer userAuth={userAuth}
+                <LoginSideDrawer userAuthHandler={userAuthHandler}
                   isOpen={sideDrawer} onClose={() => setSideDrawer(false)} />
               </Anchor>
 

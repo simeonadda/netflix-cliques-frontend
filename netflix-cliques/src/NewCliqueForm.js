@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Container, Input, Text } from "atomize";
+import { Div, Button, Container, Input, Text } from "atomize";
 
 const NewCliqueForm = ({addClique, buttonClick}) => {
   const[name, setName] = useState('')
@@ -38,12 +38,16 @@ const NewCliqueForm = ({addClique, buttonClick}) => {
 
 
   return(
-    <Container>
+    <Container d="flex" d="space-btween">
+      <Div>
       <form onSubmit={submitHandler}>
         <Input type="text" placeholder="Name of your clique" onChange={changeNameHandler} value={name} />
+        <br></br>
         <Button type="submit">Create New Clique</Button>
       </form>
-      <Button closeButton={() => buttonClick}>Close</Button>
+      </Div>
+      <br></br>
+      <Button buttonClick={(e) => buttonClick}>Close</Button>
     </Container>
   )
 }

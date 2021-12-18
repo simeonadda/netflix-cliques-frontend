@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from 'react-dom';
 import { ThemeProvider, Modal, Div, Container, Icon, Button, Text, Input, Row, Col, Image, Anchor } from "atomize";
 import SearchResults from "../SearchResults"
-import SaveTitle from "./SaveTitle"
 
-const baseUrl = "http://localhost:8000";
+
+let baseURL;
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:8000';
+} else {
+  baseURL = 'https://netflix-cliques-app.herokuapp.com';
+}
 
 function NetflixModal({ isOpen, onClose, show}) {
   const [searchInput, setSearchInput] = useState()
@@ -132,7 +138,7 @@ function NetflixModal({ isOpen, onClose, show}) {
     <>
     <Container>
       <br></br>
-    <Row d="flex" w="1120px" h="299px" justify="center" flexDir="row">
+    <Row d="flex" w="1120px" h="400px" justify="center" flexDir="row">
         {APIData.map((item, i) => {
           return(
               <React.Fragment key={i}>
@@ -146,10 +152,10 @@ function NetflixModal({ isOpen, onClose, show}) {
                     </Text>
                     <br></br>
                     <Div d="flex">
-                    <form onSubmit={submitHandler}>
-                      <Button d="flex" type="submit" onClick={show} h="2rem" justify="center"
+                    <form onSubmit={onClose}>
+                      <Button d="flex" type="submit" onClose onClick={show} h="2rem" justify="center"
                         p={{ x: "0.75rem" }} textSize="body" textColor="black" hoverTextColor="white" bg="danger800" hoverBg="black" border="1px solid" borderColor="danger800" hoverBorderColor="black" m={{ r: "0.5rem" }}>
-                      Add
+                      Close
                       </Button>
                     </form>
                     </Div>

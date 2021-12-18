@@ -9,18 +9,17 @@ import Dashboard from "./Dashboard/Dashboard"
 import { ThemeProvider, Div } from "atomize";
 
 
-function App(props) {
+function App({isOpen, onClose}) {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const userAuthHandler =()=> {
+  const userAuthHandler = () => {
     setIsLoggedIn(!isLoggedIn)
   }
 
   return (
     <Div className="App">
-      <Nav userAuth={userAuthHandler} />
-      {!isLoggedIn ? <Dashboard /> : <Welcome /> }
-      {isLoggedIn ? <LoginSideDrawer userAuth={userAuthHandler} /> : null}
+      <Nav userAuthHandler={userAuthHandler} />
+      {isLoggedIn ? <Dashboard /> : <Welcome /> }
       <Footer />
     </Div>
   );

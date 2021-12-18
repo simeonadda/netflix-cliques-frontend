@@ -6,7 +6,15 @@ import CliqueList from "../CliqueList"
 import NewCliqueForm from "../NewCliqueForm";
 import EditCliqueForm from "../EditCliqueForm";
 
-const baseUrl = "http://localhost:8000";
+// const baseUrl = "http://localhost:8000";
+
+let baseURL;
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:8000';
+} else {
+  baseURL = 'https://netflix-cliques-app.herokuapp.com';
+}
 
 function MyCliques({userAuth}) {
   const [showComponent, setShowComponent] = useState(false)

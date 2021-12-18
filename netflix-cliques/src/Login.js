@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import { Div, Button, SideDrawer, Icon, Text, Input, Anchor } from "atomize";
 
-function LoginSideDrawer({ isOpen, onClose, userAuth}) {
+let baseURL;
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:8000';
+} else {
+  baseURL = 'https://netflix-cliques-app.herokuapp.com';
+}
+
+function LoginSideDrawer({ isOpen, onClose, userAuthHandler}) {
   const [hidePassword, showPassword] = useState(false)
   const [submit, setSubmit] = useState(false)
   const [activeUser, setActiveUser] = useState(true)
@@ -23,7 +31,7 @@ function LoginSideDrawer({ isOpen, onClose, userAuth}) {
 
   const loginUser = async (e) => {
     e.preventDefault()
-    const url = "http://localhost:8000/api/v1/users/login"
+    const url = baseURL + "/api/v1/login"
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -37,7 +45,8 @@ function LoginSideDrawer({ isOpen, onClose, userAuth}) {
         credentials: "include",
       })
       if (response.status === 200) {
-        userAuth()
+        // console.log(userAuth);
+        userAuthHandler()
       } else {
         response.json().then((data) => {
           console.log(data);
@@ -50,7 +59,8 @@ function LoginSideDrawer({ isOpen, onClose, userAuth}) {
   }
 
 
-  const onClickSubmit = () => {
+  const onClickSubmit = (e) => {
+    e.preventDefault()
     setSubmit(true)
     setTimeout(() => {
       setSubmit(false)
@@ -79,7 +89,7 @@ function LoginSideDrawer({ isOpen, onClose, userAuth}) {
         </Div>
 
         <Div d="flex" justify="flex-end">
-          <Button onClick={onClose} fontFamily="secondary" textSize="title" p="2rem" bg="gray300" hoverBg="gray600" shadow="3" hoverShadow="4" textColor="black" m={{ r: "1rem" }}>
+          <Button onClick={onClickSubmit} fontFamily="secondary" textSize="title" p="2rem" bg="gray300" hoverBg="gray600" shadow="3" hoverShadow="4" textColor="black" m={{ r: "1rem" }}>
             Close
           </Button>
           <Button type="submit" isLoading={submit} fontFamily="secondary" textSize="title" p="2rem" bg={submit ? "danger500" : "danger800"} hoverBg="danger700" shadow="3" hoverShadow="4">
