@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Div } from "atomize";
 
-function Logout(props) {
+function Logout(userAuth) {
 
   const logout = (e) => {
     e.preventDefault()
@@ -10,7 +10,7 @@ function Logout(props) {
       method: "DELETE",
       credentials: "include"
     }).then((repsonse => {
-      props.checkUserLogin(false)
+      userAuth()
     }))
   }
   return(

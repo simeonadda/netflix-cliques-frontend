@@ -1,22 +1,93 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from 'react-dom';
-import { Modal, Div, Container, Icon, Button, Text, Input, Row, Col, Image, Anchor } from "atomize";
+import { ThemeProvider, Modal, Div, Container, Icon, Button, Text, Input, Row, Col, Image, Anchor } from "atomize";
 import SearchResults from "../SearchResults"
+import SaveTitle from "./SaveTitle"
 
-function NetflixModal({ isOpen, onClose, props}) {
+const baseUrl = "http://localhost:8000";
+
+function NetflixModal({ isOpen, onClose, show}) {
   const [searchInput, setSearchInput] = useState()
   const [APIData, setAPIData] = useState([])
-  const [showComponent, setShowComponent] = useState(false)
   const [filteredResults, setFilteredResults] = useState([])
   const [showResultsModal, setShowResultsModal] = useState(false)
+  const [showComponent, setShowComponent] = useState(false)
+  const[img, setImg] = useState('')
+  const[title, setTitle] = useState('')
+  const[synopsis, setSynopsis] = useState('')
+  const[user, setUser] = useState('')
+  const[year, setYear] = useState('')
 
-  useEffect(() => {
+  const theme = {
+    fontFamily: {
+      primary: 'Bitter, serif',
+      secondary: 'Oswald, serif',
+      code: 'Teko, sans-serif'
+    }
+  }
 
-    console.log(APIData);
-  }, [])
+
+
+  const setUserHandler = (e) => {
+    setImg(e.target.value);
+  }
+
+  const setImgHandler = (e) => {
+    setImg(e.target.value);
+  }
+
+  const setTitleHandler = (e) => {
+    setTitle(e.target.value);
+  }
+
+  const setSynopsisHandler = (e) => {
+    setSynopsis(e.target.value);
+  }
+
+  const setYearHandler = (e) => {
+    setImg(e.target.value);
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    const newTitleData = {
+      img: img,
+      title: title,
+      synopsis: synopsis,
+      user: user,
+      year: year
+    };
+
+  const saveNewTitleDataHandler = (newTitleData) => {
+    fetch(baseUrl + "/api/v1/titles/add_title", {
+      method: "POST",
+      body: JSON.stringify({
+        img: newTitleData.img,
+        title: newTitleData.title,
+        synopsis: newTitleData.synopsis,
+        user: newTitleData.user,
+        year: newTitleData.year
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }).then((resJson) => {
+      const copyTitle = [...title];
+      copyTitle.push(resJson.data)
+      setTitle(copyTitle)
+    });
+  };
+
+
+
+      setImg('');
+      setTitle('');
+      setSynopsis('');
+    }
 
   const netflixAPI = async (e) => {
-    let response = await fetch("https://unogsng.p.rapidapi.com/search?start_year=2000&limit=10&query=" + searchInput , {
+    let response = await fetch("https://unogsng.p.rapidapi.com/search?start_year=2000&limit=5&query=" + searchInput , {
   	   "method": "GET",
   	    "headers": {
           "x-rapidapi-host": "unogsng.p.rapidapi.com",
@@ -40,12 +111,9 @@ function NetflixModal({ isOpen, onClose, props}) {
     }
   }
 
-  const images = APIData.map((item, i) => item.img)
-  console.log(images);
-
 
   return(
-    <Container>
+    <ThemeProvider theme={theme}>
       {!showComponent ?
         <>
       <Modal isOpen={isOpen} onClose={onClose} bg="gray300" align="start" rounded="sm" h="12rem" maxW="72rem">
@@ -62,21 +130,36 @@ function NetflixModal({ isOpen, onClose, props}) {
       </Modal></>
     :
     <>
-    <Row d="flex" w="1120px" h="299px" justify="center">
-      <Col>
-          <React.Fragment>
-          <Anchor>
-            {APIData.map((item, i) => {return(<Image maxH="233px" w="166" shadow="3" hoverShadow="4" key={i} img={item.img}>
-            </Image>)})}
-            <Text>
-              {APIData.map((item, i) => {return(item.title)})}
-            </Text>
-          </Anchor>
-        </React.Fragment>
-      </Col>
-      })}
-    </Row></>}
-    </Container>
+    <Container>
+      <br></br>
+    <Row d="flex" w="1120px" h="299px" justify="center" flexDir="row">
+        {APIData.map((item, i) => {
+          return(
+              <React.Fragment key={i}>
+                <Anchor>
+                  <Col shadow="3" hoverShadow="4">
+                    <Image maxH="233px" w="166px" shadow="3" hoverShadow="4" key={i} src={item.img}></Image>
+                  </Col>
+                  <Col maxW="166px">
+                    <Text fontFamily="secondary" textColor="black" textSize="subheader">
+                      {item.title}
+                    </Text>
+                    <br></br>
+                    <Div d="flex">
+                    <form onSubmit={submitHandler}>
+                      <Button d="flex" type="submit" onClick={show} h="2rem" justify="center"
+                        p={{ x: "0.75rem" }} textSize="body" textColor="black" hoverTextColor="white" bg="danger800" hoverBg="black" border="1px solid" borderColor="danger800" hoverBorderColor="black" m={{ r: "0.5rem" }}>
+                      Add
+                      </Button>
+                    </form>
+                    </Div>
+                  </Col>
+                </Anchor>
+              </React.Fragment>
+          )
+          })}
+    </Row></Container></>}
+  </ThemeProvider>
   )
 }
 

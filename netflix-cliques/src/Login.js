@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Div, Button, SideDrawer, Icon, Text, Input, Anchor } from "atomize";
 
-function LoginSideDrawer({ isOpen, onClose, props}) {
+function LoginSideDrawer({ isOpen, onClose, userAuth}) {
   const [hidePassword, showPassword] = useState(false)
   const [submit, setSubmit] = useState(false)
   const [activeUser, setActiveUser] = useState(true)
@@ -37,8 +37,7 @@ function LoginSideDrawer({ isOpen, onClose, props}) {
         credentials: "include",
       })
       if (response.status === 200) {
-        props.checkUserLogin()
-        console.log();
+        userAuth()
       } else {
         response.json().then((data) => {
           console.log(data);
@@ -83,7 +82,7 @@ function LoginSideDrawer({ isOpen, onClose, props}) {
           <Button onClick={onClose} fontFamily="secondary" textSize="title" p="2rem" bg="gray300" hoverBg="gray600" shadow="3" hoverShadow="4" textColor="black" m={{ r: "1rem" }}>
             Close
           </Button>
-          <Button type="submit" isLoading={submit} onClick={onClickSubmit, checkActiveUser} fontFamily="secondary" textSize="title" p="2rem" bg={submit ? "danger500" : "danger800"} hoverBg="danger700" shadow="3" hoverShadow="4">
+          <Button type="submit" isLoading={submit} fontFamily="secondary" textSize="title" p="2rem" bg={submit ? "danger500" : "danger800"} hoverBg="danger700" shadow="3" hoverShadow="4">
             Sign In
           </Button>
         </Div>

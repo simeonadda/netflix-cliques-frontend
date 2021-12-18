@@ -8,7 +8,7 @@ import EditCliqueForm from "../EditCliqueForm";
 
 const baseUrl = "http://localhost:8000";
 
-function MyCliques(props) {
+function MyCliques({userAuth}) {
   const [showComponent, setShowComponent] = useState(false)
   const [cliques, setCliques] = useState([])
   const [showEditForm, setShowEditForm] = useState(false);
@@ -31,7 +31,11 @@ function MyCliques(props) {
   };
 
   useEffect(() => {
-    getCliques()
+    if ({userAuth} = true) {
+      getCliques()
+    } else {
+      return
+    }
   }, [])
 
   const saveNewCliqueDataHandler = (newCliqueData) => {

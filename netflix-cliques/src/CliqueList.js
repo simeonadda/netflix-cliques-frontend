@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Anchor, Icon, Container, Col, Text } from "atomize";
+import { ThemeProvider, Button, Anchor, Icon, Container, Col, Text } from "atomize";
 
 const CliqueList = (props) => {
   const deleteClique = (id) => {
@@ -10,22 +10,30 @@ const CliqueList = (props) => {
     props.updateClique(id);
   }
 
-  return(
+  const theme = {
+    fontFamily: {
+      primary: 'Bitter, serif',
+      secondary: 'Oswald, serif',
+      code: 'Teko, sans-serif'
+    }
+  }
 
+  return(
+    <ThemeProvider theme={theme}>
     <ul>
       {props.cliques.map((clique, i) => {
         return(
-          <Col d="flex" justify="space-around">
+          <Col size="11" d="flex">
           <React.Fragment key={i}>
-            <Text>{clique.name}</Text>
-            <Text>Owner: {clique.owner.name}</Text>
-            <Text>{clique.members} Members</Text>
-            <Anchor type="submit" onClick={() => updateClique(clique.id)}>
+            <Text fontFamily="primary" textSize="subheader" textWeight="700">{clique.name}</Text>
+            <Text fontFamily="primary" textSize="subheader">Owner: {clique.owner.name}</Text>
+            <Text fontFamily="primary" textSize="subheader">{clique.members} Members</Text>
+            <Anchor fontFamily="primary" textSize="subheader" type="submit" onClick={() => updateClique(clique.id)}>
               <Icon  name="EditSolid" color="black" size="20px"/>
               Rename Clique
             </Anchor>
             <br></br>
-            <Anchor type="submit" onClick={() => deleteClique(clique.id)}>
+            <Anchor fontFamily="primary" textSize="subheader" type="submit" onClick={() => deleteClique(clique.id)}>
               <Icon  name="DeleteSolid" color="danger800" size="20px"/>
               Delete Clique
             </Anchor>
@@ -34,7 +42,7 @@ const CliqueList = (props) => {
         )
       })}
     </ul>
-
+    </ThemeProvider>
   )
 }
 

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Button, Container, Input, Text } from "atomize";
 
-const NewCliqueForm = (props) => {
+const NewCliqueForm = ({addClique, buttonClick}) => {
   const[name, setName] = useState('')
   const[owner, setOwner] = useState('')
   const[members, setMembers] = useState(0)
+
+  const [showComponent, setShowComponent] = useState(false)
 
   const changeNameHandler = (e) => {
     setName(e.target.value);
@@ -26,7 +28,7 @@ const NewCliqueForm = (props) => {
       members: members,
     };
 
-    props.addClique(newCliqueData);
+    addClique(newCliqueData);
 
     setName('');
     setOwner('');
@@ -40,8 +42,8 @@ const NewCliqueForm = (props) => {
       <form onSubmit={submitHandler}>
         <Input type="text" placeholder="Name of your clique" onChange={changeNameHandler} value={name} />
         <Button type="submit">Create New Clique</Button>
-        <Button closeButton={e => props.buttonClick}>Close</Button>
       </form>
+      <Button closeButton={() => buttonClick}>Close</Button>
     </Container>
   )
 }

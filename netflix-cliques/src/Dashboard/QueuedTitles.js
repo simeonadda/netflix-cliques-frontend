@@ -42,8 +42,12 @@ function QueuedTitles() {
       </Row>
       <br></br>
       <Container>
-        <Image h="120px" w="120px" src="./netflix_n.png"></Image>
-        <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add a title you want to watch.</Anchor></Text>
+        <Row bg="">
+        <Col d="flex" justify="left" shadow="3">
+          <Image maxH="233px" w="166px" shadow="3" hoverShadow="4" src="https://occ-0-1373-2567.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABc3PZ4ZmocKVXt_3uGZrEoapBsa0SgXOfBuLCXkjR5e-TLXLW2-85hfp7yaI_BvulWO12p7yfsdwJowVS_7_SpWZudI3c4LFzWTrVUYKTLZ1hDke9L6qxh1JBEo.jpg?r=e07">
+          </Image>
+        </Col>
+      </Row>
       </Container>
     <br></br>
     <hr></hr>

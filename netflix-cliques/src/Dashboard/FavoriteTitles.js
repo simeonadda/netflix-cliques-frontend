@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NetflixModal from "./NetflixModal"
 import { ThemeProvider, Container, Row, Col, Text, Icon, Anchor, Image } from "atomize";
 
 function FavoriteTitles() {
   const [modal, showModal] = useState(false)
+  const [showComponent, setShowComponent] = useState(false)
+
+  useEffect(() => {
+    setShowComponent(false)
+  })
 
   return(
     <Container>
@@ -35,15 +40,21 @@ function FavoriteTitles() {
             </Text>
           </Anchor>
         </Col>
+      </Row>
+      <br></br>
+
         <NetflixModal
           isOpen={modal}
           onClose={() => showModal(false)}
         />
-      </Row>
-      <br></br>
-      <Container>
-        <Image h="120px" w="120px" src="./netflix_n.png"></Image>
-        <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add a favorite title.</Anchor></Text>
+
+
+        <Container>
+        {showComponent ?
+          <NetflixModal show={useEffect} />
+           :
+          <><Image h="120px" w="120px" src="./netflix_n.png"></Image>
+        <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add a favorite title.</Anchor></Text></>}
       </Container>
       <br></br>
       <hr></hr>

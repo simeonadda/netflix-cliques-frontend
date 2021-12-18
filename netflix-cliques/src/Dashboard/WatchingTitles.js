@@ -40,14 +40,18 @@ function WatchingTitles() {
       <br></br>
       <Container>
         {showComponent ? <>
+          <Container>
           <NetflixModal buttonClick={onButtonClick} />
+          </Container>
           </>
           :
           <>
-          <Image h="120px" w="120px" src="./netflix_n.png"></Image>
-          <Text fontFamily="code" textSize="subheader">
-            You currently have no titles. <Anchor>Add a title you're watching now.</Anchor>
-        </Text></>}
+          <Row bg="">
+          <Col d="flex" justify="left" shadow="3">
+            <Image maxH="233px" w="166px" shadow="3" hoverShadow="4" src="https://occ-0-768-769.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABSJo7emQVl2q28USx3tLaRL-UPf3BC1YGCC0jOscTw9fy9csLAs8TMp33wAi140bQvyMDHYNJOa8rcE-OgUrfuJwvilTFr7z4q_zDxltMlV-OE-r5B-ZKEUJk1HPJ3N8CNQJXyMXkIsMvL-tTXcbyTNLJsW_6u3jKQ8Z2b4.jpg?r=0f7">
+            </Image>
+          </Col>
+        </Row></>}
       </Container>
     <br></br>
     <hr></hr>

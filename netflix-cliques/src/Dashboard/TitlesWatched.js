@@ -42,8 +42,12 @@ function TitlesWatched() {
       </Row>
       <br></br>
       <Container>
-          <Image h="120px" w="120px" src="./netflix_n.png"></Image>
-          <Text fontFamily="code" textSize="subheader">You currently have no titles. <Anchor>Add a title you've watched.</Anchor></Text>
+        <Row bg="">
+        <Col d="flex" justify="left" shadow="3">
+          <Image maxH="233px" w="166px" shadow="3" hoverShadow="4" src="https://occ-0-2219-2218.1.nflxso.net/dnm/api/v6/evlCitJPPCVCry0BZlEFb5-QjKc/AAAABRkCIBxM7Odvfohs637mOsIcWSQvLN98KvmlxXqROGRY3OuU3mFdfLOLk2qzA1dOMZg-r79wH18bhWqkqc0I5qv0dw.jpg?r=50e">
+          </Image>
+        </Col>
+      </Row>
       </Container>
     <br></br>
     <hr></hr>
