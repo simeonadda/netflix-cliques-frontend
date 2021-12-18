@@ -1,7 +1,15 @@
 import React, { useState, useEffect} from "react";
-import { Div, Button, Modal, Icon, Text, Input } from "atomize";
+import { ThemeProvider, Div, Button, Modal, Icon, Text, Input } from "atomize";
 
 function SignUpModal({ isOpen, onClose, props }) {
+  const theme = {
+    fontFamily: {
+      primary: 'Bitter, serif',
+      secondary: 'Oswald, serif',
+      code: 'Raleway, san-serif'
+    }
+  }
+
   const [hidePassword, showPassword] = useState(false)
   const [submit, isSubmitting] = useState(false)
 
@@ -71,14 +79,15 @@ function SignUpModal({ isOpen, onClose, props }) {
   }
 
   return(
-    <Modal bg="black" fontFamily="primary" align="center" isOpen={isOpen} onClose={onClose} rounded="0" minW="32rem" m="40rem">
-      <Icon name="Cross" pos="absolute" top="1rem" right="1rem" size="16px" onClick={onClose} cursor="pointer"/>
+    <ThemeProvider>
+      <Modal bg="black" fontFamily="primary" textColor="white" textSize="display1" align="center" isOpen={isOpen} onClose={onClose} rounded="0" minW="32rem" m="40rem">
+        <Icon name="Cross" pos="absolute" top="1rem" right="1rem" size="16px" onClick={onClose} cursor="pointer"/>
 
-    <Text textSize="display2" fontFamily="primary" textColor="white">
-          SIGN UP MODAL
+      <Text textSize="display2" fontFamily="primary" textColor="white">
+        SIGN UP
       </Text>
 
-      <form onSubmit={registerUser}>
+      <form onSubmit={registerUser} >
         <Div m="32px">
           <label for="name">Name</label>
           <Input id="name" onChange={handleChangeName} textSize="heading" type="text" value={name}/>
@@ -113,16 +122,16 @@ function SignUpModal({ isOpen, onClose, props }) {
         </Div>
 
         <Div d="flex" justify="flex-end">
-          <Button onClick={onClose} fontFamily="secondary" textSize="heading" p="2rem" bg="gray300" hoverBg="gray400" shadow="3" hoverShadow="4" textColor="black" m={{ r: "1rem" }}>
+          <Button onClick={onClose} fontFamily="primary" textSize="heading" p="2rem" bg="gray300" hoverBg="gray400" shadow="3" hoverShadow="4" textColor="black" m={{ r: "1rem" }}>
             Close
           </Button>
-          <Button type="submit" isLoading={submit} onClick={onClickSubmit} fontFamily="secondary" textSize="heading" p="2rem" bg={submit ? "danger500" : "danger800"} hoverBg="danger700" shadow="3" hoverShadow="4">
+          <Button type="submit" isLoading={submit} onClick={onClickSubmit} fontFamily="primary" textSize="heading" p="2rem" bg={submit ? "danger500" : "danger800"} hoverBg="danger700" shadow="3" hoverShadow="4">
             Sign Up
           </Button>
         </Div>
       </form>
     </Modal>
-
+  </ThemeProvider>
 
   )
 }

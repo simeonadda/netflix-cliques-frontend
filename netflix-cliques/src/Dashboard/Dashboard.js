@@ -4,6 +4,7 @@ import MyCliques from "./MyCliques";
 import WatchingTitles from "./WatchingTitles";
 import FavoriteTitles from "./FavoriteTitles";
 import QueuedTitles from "./QueuedTitles";
+import SearchResults from "../SearchResults"
 import TitlesWatched from "./TitlesWatched";
 
 
@@ -22,7 +23,7 @@ function Dashboard() {
       <Row>
 
         <Col size="3" bg="white">
-          <Div fontFamily="primary" textWeight="700" >
+          {/*<Div fontFamily="primary" textWeight="700" >
             <br></br>
             <Image></Image>
             <br></br>
@@ -35,7 +36,7 @@ function Dashboard() {
             <Text textSize="title">Edit Profile</Text>
             <br></br>
             <Text textSize="title">Change Password</Text>
-          </Div>
+          </Div>*/}
         </Col>
 
         <Col size="7" d="flex" flexDir="column">

@@ -9,7 +9,7 @@ import { ThemeProvider, Div } from "atomize";
 
 const baseUrl = "http://localhost:8000";
 
-function App() {
+function App(props) {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   const checkUserLogin = () => {
@@ -18,11 +18,8 @@ function App() {
 
   return (
     <Div className="App">
-      <Nav checkUserLogin={checkUserLogin} />
-      {!userLoggedIn
-        ? <Dashboard />
-        : <Welcome />
-      }
+      <Nav />
+      {!userLoggedIn ? <Dashboard /> : <Welcome /> }
       <Footer />
     </Div>
   );

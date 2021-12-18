@@ -1,9 +1,10 @@
 import React from "react"
 import { Modal, Div, Container, Icon, Button, Text, Input } from "atomize";
 
-function SearchResults() {
+function SearchResults(props) {
+
   return(
-    <Div></Div>
+    <Div>{props.showResults}</Div>
   )
 }
 

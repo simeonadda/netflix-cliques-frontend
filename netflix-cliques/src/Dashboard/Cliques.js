@@ -7,7 +7,7 @@ function Cliques() {
   const [cliques, setCliques] = useState([])
 
   const getCliques = () => {
-    fetch(baseUrl + "/api/v1/cliques")
+    fetch(baseUrl + "/api/v1/cliques", { credentials: "include"})
       .then((res) => {
         if (res.status === 200) {
           return res.json();

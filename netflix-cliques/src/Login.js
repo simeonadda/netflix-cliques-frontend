@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Div, Button, SideDrawer, Icon, Text, Input, Anchor } from "atomize";
 
-function LoginSideDrawer({ isOpen, onClose }) {
+function LoginSideDrawer({ isOpen, onClose, props}) {
   const [hidePassword, showPassword] = useState(false)
   const [submit, setSubmit] = useState(false)
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [activeUser, setActiveUser] = useState(true)
 
   const [email, setEmail] = useState('')
@@ -16,10 +15,6 @@ function LoginSideDrawer({ isOpen, onClose }) {
 
   const handleChangePassword = (e) => {
     setPassword(e.target.value)
-  }
-
-  const handleUserLogin = () => {
-    setUserLoggedIn(!userLoggedIn)
   }
 
   const checkActiveUser = () => {
@@ -42,7 +37,8 @@ function LoginSideDrawer({ isOpen, onClose }) {
         credentials: "include",
       })
       if (response.status === 200) {
-        handleUserLogin()
+        props.checkUserLogin()
+        console.log();
       } else {
         response.json().then((data) => {
           console.log(data);
@@ -87,7 +83,7 @@ function LoginSideDrawer({ isOpen, onClose }) {
           <Button onClick={onClose} fontFamily="secondary" textSize="title" p="2rem" bg="gray300" hoverBg="gray600" shadow="3" hoverShadow="4" textColor="black" m={{ r: "1rem" }}>
             Close
           </Button>
-          <Button type="submit" isLoading={submit} onClick={onClickSubmit} fontFamily="secondary" textSize="title" p="2rem" bg={submit ? "danger500" : "danger800"} hoverBg="danger700" shadow="3" hoverShadow="4">
+          <Button type="submit" isLoading={submit} onClick={onClickSubmit, checkActiveUser} fontFamily="secondary" textSize="title" p="2rem" bg={submit ? "danger500" : "danger800"} hoverBg="danger700" shadow="3" hoverShadow="4">
             Sign In
           </Button>
         </Div>

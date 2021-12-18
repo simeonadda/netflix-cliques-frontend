@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TrendingTitles from "./TrendingTitles";
+import Body from "./Body";
 import { ThemeProvider, Div, Button, Text, Row, Col, Image } from "atomize";
 import SignUpModal from "./SignUp";
 
@@ -52,7 +52,7 @@ function Welcome() {
             </Col>
           </Row>
         </Div>
-        <TrendingTitles />
+        <Body />
       </Div>
     </ThemeProvider>
   )

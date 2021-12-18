@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from 'react-dom';
-import { Modal, Div, Container, Icon, Button, Text, Input } from "atomize";
+import { Modal, Div, Container, Icon, Button, Text, Input, Row, Col, Image, Anchor } from "atomize";
 import SearchResults from "../SearchResults"
 
 function NetflixModal({ isOpen, onClose }) {
   const [searchInput, setSearchInput] = useState()
   const [APIData, setAPIData] = useState([])
+  const [showComponent, setShowComponent] = useState(false)
   const [filteredResults, setFilteredResults] = useState([])
 
   let showResults;
 
   useEffect(() => {
     console.log(APIData);
-    showResults = APIData.map((item) => {
-      console.log(item);
+    showResults = APIData.map((item, i) => {
       return(item)
-
-    })
-    console.log(showResults);
+    });
   }, [APIData])
 
   const netflixAPI = async (e) => {
@@ -32,7 +30,11 @@ function NetflixModal({ isOpen, onClose }) {
       let result = await response.json()
       console.log(result);
       setAPIData(result.results)
+      setShowComponent(!showComponent)
+      console.log(showComponent);
   }
+
+  console.log(showResults);
 
   const searchItems = (searchValue) => {
     setSearchInput(searchValue)
@@ -49,20 +51,38 @@ function NetflixModal({ isOpen, onClose }) {
 
 
   return(
-    <Modal isOpen={isOpen} onClose={onClose} bg="gray300" align="start" rounded="sm" h="50rem" maxW="72rem" showResults={showResults}>
-      <br></br>
-      <Icon name="Cross" pos="absolute" top="1rem" right="1rem" size="16px" onClick={onClose} cursor="pointer"/>
+    <Container>
+      <>
+      {!showComponent ?
+        <>
+      <Modal isOpen={isOpen} onClose={onClose} bg="gray300" align="start" rounded="sm" h="12rem" maxW="72rem" showResults={showResults}>
+        <br></br>
+        <Icon name="Cross" pos="absolute" top="1rem" right="1rem" size="16px" onClick={onClose} cursor="pointer"/>
 
 
-        <Input placeholder="Search" h="3rem" onChange={(e) => searchItems(e.target.value)}
-          suffix={
-            <Button type="submit" onClick={() => netflixAPI()} pos="absolute" bg="danger800" hoverBg="danger700" h="3rem" w="5rem" top="0" right="0" rounded={{ r: "md" }}>
-              <Icon name="Search" size="36px" color="white" cursor="pointer" pos="absolute" top="50%" right="1.33rem" transform="translateY(-50%)"/>
-            </Button>
-          }
-        />
-
-    </Modal>
+          <Input placeholder="Search" h="3rem" onChange={(e) => searchItems(e.target.value)}
+            suffix={
+              <Button type="submit" onClick={() => netflixAPI()} pos="absolute" bg="danger800" hoverBg="danger700" h="3rem" w="5rem" top="0" right="0" rounded={{ r: "md" }}>
+                <Icon name="Search" size="36px" color="white" cursor="pointer" pos="absolute" top="50%" right="1.33rem" transform="translateY(-50%)"/>
+              </Button>
+            }
+          />
+        <br></br>
+      </Modal></>
+      :
+      <>
+        <Row d="flex" h="1120px" w="299px">
+          <Col>
+            <Anchor>
+              <Text>{APIData.map((item, i) => {
+                return(item.title)
+              })}</Text>
+            </Anchor>
+          </Col>
+        </Row>
+      </>}
+    </>
+    </Container>
   )
 }
 

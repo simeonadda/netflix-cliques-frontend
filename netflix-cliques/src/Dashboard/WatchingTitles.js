@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import NetflixModal from "./NetflixModal"
+import SearchResults from "../SearchResults"
 import { ThemeProvider, Modal, Container, Row, Col, Button, Text, Icon, Anchor, Image } from "atomize";
 
 function WatchingTitles() {
-  const [modal, showModal] = useState(false)
+  const [modal, setModal] = useState(false)
 
   return(
+    <React.Fragment>
     <Container>
       <Row d="flex" justify="space-between">
 
@@ -15,7 +17,7 @@ function WatchingTitles() {
           </Text>
         </Col>
 
-        <Col d="flex" justify="flex-end" onClick={() => showModal(true)}>
+        <Col d="flex" justify="flex-end" onClick={() => setModal(true)}>
           <Anchor d="flex" flexDir="row" align="center">
             <Icon name="Add" color="success800" size="20px"/>
             <Text textSize="subheader" textColor="black" ontFamily="code" textWeight="700">
@@ -26,7 +28,7 @@ function WatchingTitles() {
 
         <NetflixModal
           isOpen={modal}
-          onClose={() => showModal(false)}
+          onClose={() => setModal(false)}
         />
 
       </Row>
@@ -40,6 +42,8 @@ function WatchingTitles() {
     <br></br>
     <hr></hr>
     </Container>
+    <SearchResults />
+    </React.Fragment>
   )
 }
 

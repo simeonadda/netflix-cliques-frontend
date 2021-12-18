@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { ThemeProvider, Div, Row, Col, Text, Anchor, Image, Icon } from "atomize";
+import SignUpModal from "./SignUp"
 import LoginSideDrawer from "./Login"
+import Logout from "./Logout"
 
-function Nav() {
+function Nav(props) {
   const [userLoggedIn, setUserLoggedIn] = useState(false)
   const [sideDrawer, setSideDrawer] = useState(false)
-  const [LoginModal, setLoginModal] = useState(false)
+  const [modal, setModal] = useState(false)
 
-  const checkUserLogin = () => {
-    setUserLoggedIn(!userLoggedIn)
-  }
+
 
   const theme = {
     fontFamily: {
@@ -44,17 +44,36 @@ function Nav() {
                 ABOUT
               </Anchor>
 
+
+
+
+              {userLoggedIn ?
+              <>
+              <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
+                <Icon name="UserSolid" color="white" size="24px" />
+                USERNAME
+              </Anchor>
+
+              <Anchor  d="flex" align="center" textColor="white" hoverTextColor="danger800">
+                <Icon name="User" color="white" size="24px" />
+                <Logout />
+              </Anchor></>
+              :
+              <>
               <Anchor onClick={() => setSideDrawer(true)} d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="UserSolid" color="white" size="24px" />
                 SIGN IN
-                <LoginSideDrawer checkUserLogin={checkUserLogin}
+                <LoginSideDrawer checkUserLogin={props.checkUserLogin}
                   isOpen={sideDrawer} onClose={() => setSideDrawer(false)} />
               </Anchor>
 
-              <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
+              <Anchor onClick={() => setModal(true)} d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="User" color="white" size="24px" />
                 SIGN UP
-              </Anchor>
+                <SignUpModal
+                  isOpen={modal} onClose={() => setModal(false)} />
+              </Anchor></>
+              }
             </Text>
           </Col>
         </Row>
