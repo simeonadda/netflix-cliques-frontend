@@ -65,7 +65,7 @@ function NetflixModal({ isOpen, onClose, show}) {
     };
 
   const saveNewTitleDataHandler = (newTitleData) => {
-    fetch(baseUrl + "/api/v1/titles/add_title", {
+    fetch(baseURL + "/api/v1/titles/add_title", {
       method: "POST",
       body: JSON.stringify({
         img: newTitleData.img,

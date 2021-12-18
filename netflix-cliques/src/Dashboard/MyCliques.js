@@ -6,7 +6,7 @@ import CliqueList from "../CliqueList"
 import NewCliqueForm from "../NewCliqueForm";
 import EditCliqueForm from "../EditCliqueForm";
 
-// const baseUrl = "http://localhost:8000";
+// const baseURL = "http://localhost:8000";
 
 let baseURL;
 
@@ -23,7 +23,7 @@ function MyCliques({userAuth}) {
   const [edittedClique, setEdittedClique] = useState(null)
 
   const getCliques = () => {
-    fetch(baseUrl + "/api/v1/cliques/", { credentials: "include"})
+    fetch(baseURL + "/api/v1/cliques/", { credentials: "include"})
       .then((res) => {
         if (res.status === 200) {
           return res.json();
@@ -47,7 +47,7 @@ function MyCliques({userAuth}) {
   }, [])
 
   const saveNewCliqueDataHandler = (newCliqueData) => {
-    fetch(baseUrl + "/api/v1/cliques/new_clique", {
+    fetch(baseURL + "/api/v1/cliques/new_clique", {
       method: "POST",
       body: JSON.stringify({
         name: newCliqueData.name,
@@ -68,7 +68,7 @@ function MyCliques({userAuth}) {
   const deleteCliqueHandler = (id) => {
     console.log(cliques);
     console.log(id);
-    fetch(baseUrl + "/api/v1/cliques/" + id, {
+    fetch(baseURL + "/api/v1/cliques/" + id, {
       method: "DELETE",
     }).then((res) => {
       const findIndex = cliques.findIndex((clique) => clique.id === id);
@@ -87,7 +87,7 @@ function MyCliques({userAuth}) {
   };
 
   const editCliqueHandler = (id, updatedCliqueData) => {
-    fetch(baseUrl + "/api/v1/cliques/" + id, {
+    fetch(baseURL + "/api/v1/cliques/" + id, {
       method: "PUT",
       body: JSON.stringify({
         name: updatedCliqueData.name,
