@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
   baseURL = 'https://netflix-cliques-be.herokuapp.com';
 }
 
-function MyCliques({userAuth}) {
+function MyCliques({userAuthHandler}) {
   const [showComponent, setShowComponent] = useState(false)
   const [cliques, setCliques] = useState([])
   const [showEditForm, setShowEditForm] = useState(false);
@@ -39,7 +39,7 @@ function MyCliques({userAuth}) {
   };
 
   useEffect(() => {
-    if ({userAuth} = true) {
+    if ({userAuthHandler} == true) {
       getCliques()
     } else {
       return

@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'development') {
 
 function LoginSideDrawer({ isOpen, onClose, userAuthHandler}) {
   const [hidePassword, showPassword] = useState(false)
-  const [submit, setSubmit] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [activeUser, setActiveUser] = useState(true)
 
   const [email, setEmail] = useState('')
@@ -45,7 +45,6 @@ function LoginSideDrawer({ isOpen, onClose, userAuthHandler}) {
         credentials: "include",
       })
       if (response.status === 200) {
-        // console.log(userAuth);
         userAuthHandler()
       } else {
         response.json().then((data) => {
@@ -59,13 +58,12 @@ function LoginSideDrawer({ isOpen, onClose, userAuthHandler}) {
   }
 
 
-  const onClickSubmit = (e) => {
-    e.preventDefault()
-    setSubmit(true)
+  const onClickSubmit = () => {
+    setIsSubmitting(true)
     setTimeout(() => {
-      setSubmit(false)
+      setIsSubmitting(false)
       onClose()
-    }, 600)
+    }, 600);
   }
 
   return(
@@ -89,10 +87,10 @@ function LoginSideDrawer({ isOpen, onClose, userAuthHandler}) {
         </Div>
 
         <Div d="flex" justify="flex-end">
-          <Button onClick={onClickSubmit} fontFamily="secondary" textSize="title" p="2rem" bg="gray300" hoverBg="gray600" shadow="3" hoverShadow="4" textColor="black" m={{ r: "1rem" }}>
-            Close
+          <Button onClick={onClose} fontFamily="secondary" textSize="title" p="2rem" bg="gray300" hoverBg="gray600" shadow="3" hoverShadow="4" textColor="black" m={{ r: "1rem" }}>
+            Cancel
           </Button>
-          <Button type="submit" isLoading={submit} fontFamily="secondary" textSize="title" p="2rem" bg={submit ? "danger500" : "danger800"} hoverBg="danger700" shadow="3" hoverShadow="4">
+          <Button type="submit" isLoading={isSubmitting} onClick={onClickSubmit} fontFamily="secondary" textSize="title" p="2rem" bg={isSubmitting ? "danger400" : "danger800"} hoverBg="danger700" shadow="3" hoverShadow="4">
             Sign In
           </Button>
         </Div>

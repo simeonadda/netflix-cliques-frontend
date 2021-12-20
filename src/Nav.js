@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { ThemeProvider, Div, Row, Col, Text, Anchor, Image, Icon } from "atomize";
 import SignUpModal from "./SignUp"
-import LoginSideDrawer from "./Login"
+import LoginSideDrawer from "./LoginSideDrawer"
 import Logout from "./Logout"
 
-function Nav({userAuthHandler, isLoggedIn}) {
-  const [sideDrawer, setSideDrawer] = useState(false)
-  const [modal, setModal] = useState(false)
+function Nav({ userAuthHandler, isLoggedIn }) {
+  const [showSideDrawer, setShowSideDrawer] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
 
 
@@ -46,7 +46,8 @@ function Nav({userAuthHandler, isLoggedIn}) {
 
 
 
-              {isLoggedIn ?
+              {
+                {isLoggedIn} ?
               <>
               <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="UserSolid" color="white" size="24px" />
@@ -56,22 +57,24 @@ function Nav({userAuthHandler, isLoggedIn}) {
               <Anchor  d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="User" color="white" size="24px" />
                 <Logout userAuthHandler={userAuthHandler} />
-              </Anchor></>
+              </Anchor>
+              </>
               :
               <>
-              <Anchor onClick={() => setSideDrawer(true)} d="flex" align="center" textColor="white" hoverTextColor="danger800">
+              <Anchor onClick={() => setShowSideDrawer(true)} d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="UserSolid" color="white" size="24px" />
                 SIGN IN
                 <LoginSideDrawer userAuthHandler={userAuthHandler}
-                  isOpen={sideDrawer} onClose={() => setSideDrawer(false)} />
+                  isOpen={showSideDrawer} onClose={() => setShowSideDrawer(false)} />
               </Anchor>
 
-              <Anchor onClick={() => setModal(true)} d="flex" align="center" textColor="white" hoverTextColor="danger800">
+              <Anchor onClick={() => setShowModal(true)} d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="User" color="white" size="24px" />
                 SIGN UP
                 <SignUpModal
-                  isOpen={modal} onClose={() => setModal(false)} />
-              </Anchor></>
+                  isOpen={showModal} onClose={() => setShowModal(false)} />
+              </Anchor>
+              </>
               }
             </Text>
           </Col>

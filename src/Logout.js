@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'development') {
   baseURL = 'https://netflix-cliques-be.herokuapp.com';
 }
 
-function Logout(userAuth) {
+function Logout({ userAuthHandler }) {
 
   const logout = (e) => {
     e.preventDefault()
@@ -18,9 +18,15 @@ function Logout(userAuth) {
       method: "DELETE",
       credentials: "include"
     }).then((repsonse => {
-      userAuth()
+      console.log(userAuthHandler)
+      if (userAuthHandler == true) {
+        userAuthHandler()
+      } else {
+        return
+      }
     }))
   }
+
   return(
     <Div onClick={logout}>LOGOUT</Div>
   )

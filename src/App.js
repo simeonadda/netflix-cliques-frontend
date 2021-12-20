@@ -1,7 +1,5 @@
 import './App.css';
 import React, { useState } from 'react';
-import LoginSideDrawer from "./Login"
-import Logout from "./Logout"
 import Nav from "./Nav";
 import Welcome from "./Welcome";
 import Footer from "./Footer";
