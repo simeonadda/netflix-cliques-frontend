@@ -9,7 +9,7 @@ let baseURL;
 if (process.env.NODE_ENV === 'development') {
   baseURL = 'http://localhost:8000';
 } else {
-  baseURL = 'https://netflix-cliques-app.herokuapp.com';
+  baseURL = 'https://netflix-cliques-be.herokuapp.com';
 }
 
 function NetflixModal({ isOpen, onClose, show}) {

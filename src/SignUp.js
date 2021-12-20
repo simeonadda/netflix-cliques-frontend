@@ -1,6 +1,14 @@
 import React, { useState, useEffect} from "react";
 import { ThemeProvider, Div, Button, Modal, Icon, Text, Input } from "atomize";
 
+let baseURL;
+
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:8000';
+} else {
+  baseURL = 'https://netflix-cliques-be.herokuapp.com';
+}
+
 function SignUpModal({ isOpen, onClose, props }) {
   const theme = {
     fontFamily: {
@@ -41,7 +49,7 @@ function SignUpModal({ isOpen, onClose, props }) {
 
   const registerUser = async (e) => {
     e.preventDefault()
-    const url = "http://localhost:8000/api/v1/users/signup"
+    const url = baseURL + "/api/v1/users/signup"
     try {
       const response = await fetch(url, {
         method: 'POST',
