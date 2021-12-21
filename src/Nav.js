@@ -8,7 +8,7 @@ function Nav({ userAuthHandler, isLoggedIn }) {
   const [showSideDrawer, setShowSideDrawer] = useState(false)
   const [showModal, setShowModal] = useState(false)
 
-
+  console.log(isLoggedIn);
 
   const theme = {
     fontFamily: {
@@ -46,8 +46,7 @@ function Nav({ userAuthHandler, isLoggedIn }) {
 
 
 
-              {
-                {isLoggedIn} ?
+              {isLoggedIn ?
               <>
               <Anchor d="flex" align="center" textColor="white" hoverTextColor="danger800">
                 <Icon name="UserSolid" color="white" size="24px" />

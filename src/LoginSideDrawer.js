@@ -45,7 +45,7 @@ function LoginSideDrawer({ isOpen, onClose, userAuthHandler}) {
         credentials: "include",
       })
       if (response.status === 200) {
-        userAuthHandler()
+        userAuthHandler(true)
       } else {
         response.json().then((data) => {
           console.log(data);

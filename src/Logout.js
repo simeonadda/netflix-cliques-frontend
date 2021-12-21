@@ -19,11 +19,7 @@ function Logout({ userAuthHandler }) {
       credentials: "include"
     }).then((repsonse => {
       console.log(userAuthHandler)
-      if (userAuthHandler == true) {
         userAuthHandler()
-      } else {
-        return
-      }
     }))
   }
 

@@ -14,9 +14,11 @@ function App({isOpen, onClose}) {
     setIsLoggedIn(!isLoggedIn)
   }
 
+  console.log(isLoggedIn);
+
   return (
     <Div className="App">
-      <Nav userAuthHandler={userAuthHandler} />
+      <Nav isLoggedIn={isLoggedIn} userAuthHandler={userAuthHandler} />
       {isLoggedIn ? <Dashboard /> : <Welcome /> }
       <Footer />
     </Div>
