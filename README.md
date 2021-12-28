@@ -1,6 +1,6 @@
-# Netflix Cliques Backend 
+# Netflix Cliques Frontend 
 
-This is the backend repository. 
+This is the frontend repository. 
 
 ## Project Description
 
